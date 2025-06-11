@@ -6,7 +6,7 @@ resource "azurerm_virtual_network" "vnet" {
   location            = var.resource_group_location
   resource_group_name = var.resource_group_name
   address_space       = var.address_space
-  dns_servers         = var.dns_servers
+  dns_servers         = var.vnet_dns_servers
 
   tags = merge(
     var.common_tags,

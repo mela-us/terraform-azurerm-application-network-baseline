@@ -28,7 +28,7 @@ variable "address_space" {
   description = "The address space that is used by the virtual network"
 }
 
-variable "dns_servers" {
+variable "vnet_dns_servers" {
   type        = list(string)
   default     = []
   description = "The DNS servers that are used by the virtual network"

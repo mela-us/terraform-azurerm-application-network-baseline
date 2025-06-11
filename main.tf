@@ -6,9 +6,10 @@ module "vnet" {
   env    = var.env
 
   resource_group_name     = var.resource_group_name
-  resource_group_location = data.azurerm_resource_group.rg_network.location
+  resource_group_location = var.resource_group_location
   vnet_name               = var.vnet_name
   address_space           = var.vnet_address_space
+  vnet_dns_servers        = var.vnet_dns_servers
 
   common_tags = var.common_tags
 }
@@ -34,7 +35,7 @@ module "routes" {
   env    = var.env
 
   resource_group_name     = var.resource_group_name
-  resource_group_location = data.azurerm_resource_group.rg_network.location
+  resource_group_location = var.resource_group_location
   subnet_ids              = module.subnets.subnet_ids
   route_tables            = var.route_tables
   common_tags             = var.common_tags

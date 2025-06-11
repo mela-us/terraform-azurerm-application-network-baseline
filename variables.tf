@@ -13,6 +13,11 @@ variable "resource_group_name" {
   description = "Name of the resource group"
 }
 
+variable "resource_group_location" {
+  type        = string
+  description = "Location of the resource group"
+}
+
 variable "vnet_name" {
   type        = string
   description = "Name of the virtual network"
@@ -21,6 +26,12 @@ variable "vnet_name" {
 variable "vnet_address_space" {
   type        = list(string)
   description = "Address space for the virtual network"
+}
+
+variable "vnet_dns_servers" {
+  type        = list(string)
+  default     = []
+  description = "List of DNS servers for the virtual network"
 }
 
 variable "subnets" {
