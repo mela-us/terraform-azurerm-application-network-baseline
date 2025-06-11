@@ -29,6 +29,8 @@ resource "azurerm_route" "route" {
   route_table_name    = each.value.route_table_name
   address_prefix      = each.value.address_prefix
   next_hop_type       = each.value.next_hop_type
+
+  depends_on = [ azurerm_route_table.route_table[each.value.route_table_name] ]
 }
 
 locals {
@@ -56,6 +58,8 @@ resource "azurerm_subnet_route_table_association" "subnet_route_table_associatio
 
   subnet_id      = var.subnet_ids[each.value.subnet_name]
   route_table_id = azurerm_route_table.route_table[each.value.route_table_name].id
+
+  depends_on = [ azurerm_route_table.route_table[each.value.route_table_name] ]
 }
 
 locals {
