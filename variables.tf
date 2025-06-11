@@ -65,9 +65,10 @@ variable "route_tables" {
   type = list(object({
     route_table_name = string
     routes = list(object({
-      route_name     = string
-      address_prefix = string
-      next_hop_type  = string
+      route_name             = string
+      address_prefix         = string
+      next_hop_type          = string
+      next_hop_in_ip_address = optional(string)
     }))
     subnet_names = list(string)
   }))

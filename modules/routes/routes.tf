@@ -24,27 +24,28 @@ resource "azurerm_route" "route" {
     for route in local.routes : "${route.route_table_name}-${route.route_name}" => route
   }
 
-  name                = each.value.route_name
-  resource_group_name = var.resource_group_name
-  route_table_name    = each.value.route_table_name
-  address_prefix      = each.value.address_prefix
-  next_hop_type       = each.value.next_hop_type
-
-  depends_on = [ azurerm_route_table.route_table ]
+  name                   = each.value.route_name
+  resource_group_name    = var.resource_group_name
+  route_table_name       = each.value.route_table_name
+  address_prefix         = each.value.address_prefix
+  next_hop_type          = each.value.next_hop_type
+  next_hop_in_ip_address = lookup(each.value, "next_hop_in_ip_address", null)
+  depends_on             = [azurerm_route_table.route_table]
 }
+
 locals {
   routes = flatten([
     for rt in var.route_tables : [
       for route in rt.routes : {
-        route_name       = route.route_name
-        address_prefix   = route.address_prefix
-        next_hop_type    = route.next_hop_type
-        route_table_name = rt.route_table_name
+        route_name             = route.route_name
+        address_prefix         = route.address_prefix
+        next_hop_type          = route.next_hop_type
+        route_table_name       = rt.route_table_name
+        next_hop_in_ip_address = lookup(route, "next_hop_in_ip_address", null)
       }
     ]
   ])
 }
-
 
 /******************************************
 	        Route Table Association
@@ -58,7 +59,7 @@ resource "azurerm_subnet_route_table_association" "subnet_route_table_associatio
   subnet_id      = var.subnet_ids[each.value.subnet_name]
   route_table_id = azurerm_route_table.route_table[each.value.route_table_name].id
 
-  depends_on = [ azurerm_route_table.route_table ]
+  depends_on = [azurerm_route_table.route_table]
 }
 
 locals {

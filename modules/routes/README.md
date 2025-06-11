@@ -34,7 +34,7 @@ No modules.
 | <a name="input_env"></a> [env](#input\_env) | env | `string` | n/a | yes |
 | <a name="input_resource_group_location"></a> [resource\_group\_location](#input\_resource\_group\_location) | The location of the resource group in which to create the Redis Cache | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group in which to create the Redis Cache | `string` | n/a | yes |
-| <a name="input_route_tables"></a> [route\_tables](#input\_route\_tables) | List of route tables with their routes | <pre>list(object({<br/>    route_table_name = string<br/>    routes = list(object({<br/>      route_name     = string<br/>      address_prefix = string<br/>      next_hop_type  = string<br/>    }))<br/>    subnet_names = list(string)<br/>  }))</pre> | n/a | yes |
+| <a name="input_route_tables"></a> [route\_tables](#input\_route\_tables) | List of route tables with their routes | <pre>list(object({<br/>    route_table_name = string<br/>    routes = list(object({<br/>      route_name             = string<br/>      address_prefix         = string<br/>      next_hop_type          = string<br/>      next_hop_in_ip_address = optional(string)<br/>    }))<br/>    subnet_names = list(string)<br/>  }))</pre> | n/a | yes |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | Map of subnet name to subnet ID | `map(string)` | n/a | yes |
 
 ## Outputs
