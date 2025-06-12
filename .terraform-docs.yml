@@ -1,13 +1,6 @@
 version: 0.20.0
-
 formatter: markdown
-output: markdown
-output-mode: inject
 output-file: README.md
-
+output-mode: inject
 settings:
-  escape: true
   indent: 2
-  sort:
-    enabled: true
-    by: name
