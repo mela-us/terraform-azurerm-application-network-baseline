@@ -14,7 +14,6 @@ variable "subnets" {
       name             = string
       address_prefixes = list(string)
 
-      # Optional properties for the subnet
       delegation = optional(
         list(
           object({
@@ -26,11 +25,13 @@ variable "subnets" {
           })
         )
       )
+
       default_outbound_access_enabled               = optional(bool, true)
       private_endpoint_network_policies             = optional(string, "Disabled")
       service_endpoints                             = optional(list(string), [])
       private_link_service_network_policies_enabled = optional(bool, true)
     })
   )
+
   description = "List of subnets to create in the virtual network"
 }
