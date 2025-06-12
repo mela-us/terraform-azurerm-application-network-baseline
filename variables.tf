@@ -36,17 +36,20 @@ variable "vnet_dns_servers" {
 
 variable "subnets" {
   type = list(object({
-    name                                          = string
-    address_prefixes                              = list(string)
+    name             = string
+    address_prefixes = list(string)
+
     default_outbound_access_enabled               = optional(bool, true)
     private_endpoint_network_policies             = optional(string, "Disabled")
     service_endpoints                             = optional(list(string), [])
     private_link_service_network_policies_enabled = optional(bool, true)
+
     delegation = list(object({
       name = string
       service_delegation = object({
-        name = string
-      actions = list(string) })
+        name    = string
+        actions = list(string)
+      })
     }))
   }))
 
