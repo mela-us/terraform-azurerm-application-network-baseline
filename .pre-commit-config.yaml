@@ -22,6 +22,7 @@ repos:
     - --hook-config=--path-to-file=README.md
     - --hook-config=--create-file-if-not-exist=true
     - --args=--lockfile=false
+    - --args=--config=.terraform-docs.yml
   - id: terraform_tflint
     args:
     - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
