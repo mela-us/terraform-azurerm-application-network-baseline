@@ -45,9 +45,8 @@ variable "subnets" {
     delegation = list(object({
       name = string
       service_delegation = object({
-        name    = string
-        actions = list(string)
-      })
+        name = string
+      actions = list(string) })
     }))
   }))
 
