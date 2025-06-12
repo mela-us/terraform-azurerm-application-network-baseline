@@ -5,3 +5,4 @@ test:
 	terraform init
 	tflint --init
 	pre-commit run -a --show-diff-on-failure
+
