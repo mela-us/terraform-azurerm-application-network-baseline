@@ -2,5 +2,9 @@ version: 0.20.0
 formatter: markdown
 output-file: README.md
 output-mode: inject
+
 settings:
+  escape: true
   indent: 2
+  hide-empty: true
+  anchor: false
