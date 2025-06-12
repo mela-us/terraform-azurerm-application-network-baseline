@@ -14,17 +14,13 @@ variable "subnets" {
       name             = string
       address_prefixes = list(string)
 
-      delegation = optional(
-        list(
-          object({
-            name = string
-            service_delegation = object({
-              name    = string
-              actions = list(string)
-            })
-          })
-        )
-      )
+      delegation = list(object({
+        name = string
+        service_delegation = object({
+          name    = string
+          actions = list(string)
+        })
+      }))
 
       default_outbound_access_enabled               = optional(bool, true)
       private_endpoint_network_policies             = optional(string, "Disabled")
